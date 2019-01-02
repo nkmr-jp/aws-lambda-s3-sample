@@ -53,8 +53,8 @@ aws --debug lambda create-function \
 --zip-file fileb://CreateThumbnail.zip \
 --handler CreateThumbnail.handler \
 --runtime python3.7 \
---role arn:aws:iam::xxxxxxxx:role/lambda-s3-role \
---timeout 10 \
+--role arn:aws:iam::<account-id>:role/lambda-s3-role \
+--timeout 30 \
 --memory-size 128
 ```
 
@@ -71,10 +71,10 @@ aws lambda add-permission \
 --statement-id lambda-s3-sample-statement20190101 \
 --action "lambda:InvokeFunction" \
 --source-arn arn:aws:s3:::lambda-s3-sample20190101 \
---source-account xxxxxxxx
+--source-account <account-id>
 ```
 
-bucket-owner-account-id is here.
+<account-id> is here.(12 digit account id)
 https://console.aws.amazon.com/support/home?#
 
 
