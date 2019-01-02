@@ -96,3 +96,21 @@ get policy
 ```sh
 aws lambda get-policy --function-name CreateThumbnail
 ```
+
+Image upload to s3 bucket and  confirm thumbnail created.
+```sh
+$ aws s3 cp image.jpg s3://lambda-s3-sample20190101
+upload: ./image.jpg to s3://lambda-s3-sample20190101/image.jpg
+
+$ aws s3 ls s3://lambda-s3-sample20190101
+2019-01-02 14:36:26    1444202 image.jpg
+
+$ aws s3 ls s3://lambda-s3-sample20190101resized
+2019-01-02 14:36:37     259610 image.jpg
+```
+
+delete image
+```sh
+aws s3 rm s3://lambda-s3-sample20190101/image.jpg
+aws s3 rm s3://lambda-s3-sample20190101resized/image.jpg
+```
