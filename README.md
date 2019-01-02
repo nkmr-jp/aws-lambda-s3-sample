@@ -37,10 +37,10 @@ docker rmi aws-lambda-s3-sample
 ## 2. Create zip file to deploy
 
 ```sh
-$ cd ./site-packages
-$ zip -r9 ../CreateThumbnail.zip .
-$ cd -
-$ zip -g CreateThumbnail.zip CreateThumbnail.py
+cd ./site-packages
+zip -r9 ../CreateThumbnail.zip .
+cd -
+zip -g CreateThumbnail.zip CreateThumbnail.py
 ```
 
 ## 3. run aws command
@@ -48,7 +48,7 @@ $ zip -g CreateThumbnail.zip CreateThumbnail.py
 create lambda function
 
 ```sh
-$ aws --debug lambda create-function \
+aws --debug lambda create-function \
 --function-name CreateThumbnail \
 --zip-file fileb://CreateThumbnail.zip \
 --handler CreateThumbnail.handler \
@@ -60,12 +60,12 @@ $ aws --debug lambda create-function \
 
 invoke (test) 
 ```sh
-$ aws lambda invoke --function-name CreateThumbnail --invocation-type Event --payload file://inputfile.json outputfile.txt
+aws lambda invoke --function-name CreateThumbnail --invocation-type Event --payload file://inputfile.json outputfile.txt
 ```
 
 add permission
 ```sh
-$ aws lambda add-permission \
+aws lambda add-permission \
 --function-name CreateThumbnail \
 --principal s3.amazonaws.com \
 --statement-id lambda-s3-sample-statement20190101 \
@@ -82,17 +82,17 @@ https://console.aws.amazon.com/support/home?#
 
 update function
 ```
-$ aws lambda update-function-code --function-name CreateThumbnail --zip-file fileb://CreateThumbnail.zip
+aws lambda update-function-code --function-name CreateThumbnail --zip-file fileb://CreateThumbnail.zip
 ```
 
 remove permission
 ```sh
-$ aws lambda remove-permission \
+aws lambda remove-permission \
 --function-name CreateThumbnail \
 --statement-id lambda-s3-sample-statement20190101
 ```
 
 get policy
 ```sh
-$ aws lambda get-policy --function-name CreateThumbnail
+aws lambda get-policy --function-name CreateThumbnail
 ```
