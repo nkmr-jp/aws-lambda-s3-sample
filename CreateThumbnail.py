@@ -18,6 +18,11 @@ def resize_image(image_path, resized_path):
 
 
 def handler(event, context):
+    print('event')
+    print(event)
+    print('context')
+    print(context)
+
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
         key = record['s3']['object']['key']

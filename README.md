@@ -47,6 +47,8 @@ zip -g CreateThumbnail.zip CreateThumbnail.py
 
 create lambda function
 
+If time out error occured use s3 upload ([refs](https://stackoverflow.com/questions/48347520/the-write-operation-timed-out-in-lambda-update-function-code))
+
 ```sh
 aws --debug lambda create-function \
 --function-name CreateThumbnail \
